@@ -6,12 +6,12 @@ There are several zookeeper docker images for creating standalone instances of z
 
 # Docker image
 ```
-docker pull jeygeethan/zookeeper-cluster
+docker pull draju1980/zookeeper-cluster
 ```
-[Docker hub link](https://hub.docker.com/r/jeygeethan/zookeeper-cluster/)
+[Docker hub link](https://github.com/draju1980/docker-zookeeper-cluster/)
 
 # Looking for kafka cluster?
-Go here : [kafka-cluster](https://github.com/gten/docker-kafka-cluster)
+Go here : [kafka-cluster](https://github.com/draju1980/kafka/)
 
 # Zookeeper Cluster (multi-host)
 ## Manual run of the cluster
@@ -34,7 +34,7 @@ docker run -d --restart=always \
       -p 3888:3888 \
       -v /var/lib/zookeeper:/var/lib/zookeeper \
       -v /var/log/zookeeper:/var/log/zookeeper  \
-      jeygeethan/zookeeper-cluster zookeeper_1_ip_or_hostname,zookeeper_2_ip_or_hostname,zookeeper_3_ip_or_hostname $ID
+      draju1980/zookeeper-cluster zookeeper_1_ip_or_hostname,zookeeper_2_ip_or_hostname,zookeeper_3_ip_or_hostname $ID
 ```
 
 ### Sample configuration for the three nodes:
@@ -54,7 +54,7 @@ docker run -d --restart=always \
       -p 3888:3888 \
       -v /var/lib/zookeeper:/var/lib/zookeeper \
       -v /var/log/zookeeper:/var/log/zookeeper  \
-      jeygeethan/zookeeper-cluster docker_host_1,docker_host_2,docker_host_3 1
+      draju1980/zookeeper-cluster docker_host_1,docker_host_2,docker_host_3 1
 ```
 
 #### For second node (docker_host_2)
@@ -66,7 +66,7 @@ docker run -d --restart=always \
       -p 3888:3888 \
       -v /var/lib/zookeeper:/var/lib/zookeeper \
       -v /var/log/zookeeper:/var/log/zookeeper  \
-      jeygeethan/zookeeper-cluster docker_host_1,docker_host_2,docker_host_3 2
+      draju1980/zookeeper-cluster docker_host_1,docker_host_2,docker_host_3 2
 ```
 
 #### For third node (docker_host_3)
@@ -78,7 +78,7 @@ docker run -d --restart=always \
       -p 3888:3888 \
       -v /var/lib/zookeeper:/var/lib/zookeeper \
       -v /var/log/zookeeper:/var/log/zookeeper  \
-      jeygeethan/zookeeper-cluster docker_host_1,docker_host_2,docker_host_3 3
+      draju1980/zookeeper-cluster docker_host_1,docker_host_2,docker_host_3 3
 ```
 
 ## Sample docker-compose.yml for the cluster creation
@@ -87,7 +87,7 @@ docker run -d --restart=always \
 version: '2'
 services:
   zk_1:
-    image: jeygeethan/zookeeper-cluster
+    image: draju1980/zookeeper-cluster
     container_name: zk_1
     ports:
       - '2181:2181'
@@ -102,7 +102,7 @@ services:
     networks:
       - some_overlay_network
   zk_2:
-    image: jeygeethan/zookeeper-cluster
+    image: draju1980/zookeeper-cluster
     container_name: zk_2
     ports:
       - '2181:2181'
@@ -117,7 +117,7 @@ services:
     networks:
       - some_overlay_network
   zk_3:
-    image: jeygeethan/zookeeper-cluster
+    image: draju1980/zookeeper-cluster
     container_name: zk_3
     ports:
       - '2181:2181'
